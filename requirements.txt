@@ -1,0 +1,2 @@
+Django==1.7b3
+pyinotify==0.9.4

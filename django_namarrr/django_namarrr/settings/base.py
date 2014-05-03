@@ -13,6 +13,10 @@ from pathlib import Path
 import os
 
 BASE_DIR = Path(__file__).parents[2]
+STATIC_ROOT = Path(BASE_DIR, "static").as_posix()
+TEMPLATE_DIRS = (
+    Path(BASE_DIR, "templates").as_posix(),
+)
 
 from django.core.exceptions import ImproperlyConfigured
 
@@ -43,6 +47,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'names',
 )
 
 MIDDLEWARE_CLASSES = (

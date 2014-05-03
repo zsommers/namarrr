@@ -9,20 +9,27 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from pathlib import Path
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+BASE_DIR = Path(__file__).parents[2]
+
+from django.core.exceptions import ImproperlyConfigured
+
+
+def get_env_variable(var_name):
+    """Get the environmental variable or return exception"""
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set the {} environmental variable".format(var_name)
+        raise ImproperlyConfigured(error_msg)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6ia4u+^1@yr1=i#ac$8wd^i2fyohwc#=mlq#je=b&kb*ih4n+8'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
+SECRET_KEY = get_env_variable('NAMARRR_KEY')
 
 ALLOWED_HOSTS = []
 
@@ -47,8 +54,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-
-ROOT_URLCONF = 'django_namarrr.urls'
 
 WSGI_APPLICATION = 'django_namarrr.wsgi.application'
 

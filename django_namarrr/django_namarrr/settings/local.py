@@ -1,4 +1,8 @@
 from .base import *
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '6ia4u+^1@yr1=i#ac$8wd^i2fyohwc#=mlq#je=b&kb*ih4n+8'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 EMAIL_HOST = "localhost"
@@ -13,6 +17,4 @@ DATABASES = {
 
 INSTALLED_APPS += ('debug_toolbar.apps.DebugToolbarConfig', )
 
-# MIDDLEWARE_CLASSES += ('debug_toobar.middleware.DebugToobarMiddleware', )
-
-# DEBUG_TOOLBAR_PATCH_SETTINGS = False
+ROOT_URLCONF = 'django_namarrr.urls'

@@ -9,12 +9,5 @@ urlpatterns = patterns(
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', include('names.urls', namespace='names'))
 )
-
-# if settings.DEBUG:
-#     import debug_toolbar
-#     print("DEBUG=True - Importing debug_toolbar")
-#     urlpatterns += patterns(
-#         '',
-#         url(r'^__debug__/', include(debug_toolbar.urls)),
-#     )

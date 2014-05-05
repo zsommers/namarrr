@@ -1,6 +1,8 @@
 """
 Django settings for django_namarrr project.
 
+Base settings for all occasions
+
 For more information on this file, see
 https://docs.djangoproject.com/en/dev/topics/settings/
 
@@ -13,7 +15,7 @@ from pathlib import Path
 import os
 
 BASE_DIR = Path(__file__).parents[2]
-STATIC_ROOT = Path(BASE_DIR, "static").as_posix()
+STATIC_ROOT = Path(BASE_DIR, "collected_static").as_posix()
 TEMPLATE_DIRS = (
     Path(BASE_DIR, "templates").as_posix(),
 )
@@ -48,6 +50,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'names',
+    'accounts',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -61,6 +64,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 WSGI_APPLICATION = 'django_namarrr.wsgi.application'
+
+ROOT_URLCONF = 'django_namarrr.urls'
 
 
 # Database
@@ -91,3 +96,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Authentication
+# https://docs.djangoproject.com/en/1.7/topics/auth/
+
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'names:index'

@@ -3,10 +3,6 @@ from random import uniform
 from django.db import models
 
 
-def weighting(votes=0):
-    return 5 - 100 / (votes + 20)
-
-
 class WordManager(models.Manager):
     def weighted_random(self, **kwargs):
         total = self.aggregate(models.Sum('weight'))['weight__sum']
@@ -19,6 +15,7 @@ class WordManager(models.Manager):
 
 
 class Word(models.Model):
+    """Abstract base model of rateable words"""
     text = models.CharField(max_length=64,
                             unique=True)
     upvotes = models.IntegerField(default=0)
@@ -28,12 +25,23 @@ class Word(models.Model):
                                  default=5)
 
     def upvote(self):
+        """Business logic for handling upvotes"""
         self.upvotes += 1
-        self.weight = weighting(self.upvotes - self.downvotes)
+        self.weigh_votes()
 
     def downvote(self):
+        """Business logic for handling downvotes"""
         self.downvotes += 1
-        self.weight = weighting(self.upvotes - self.downvotes)
+        self.weigh_votes()
+
+    def weigh_votes(self):
+        """Logic for weighting Word votes"""
+        votes = abs(self.upvotes - self.downvotes)
+        offset = 100 / (votes + 20)
+        if self.upvotes > self.downvotes:
+            self.weight = 5 + offset
+        else:
+            self.weight = 5 - offset
 
     def __str__(self):
         return self.text

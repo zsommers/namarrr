@@ -1,3 +1,15 @@
+"""
+Django settings for django_namarrr project.
+
+Local developer settings
+
+For more information on this file, see
+https://docs.djangoproject.com/en/dev/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/dev/ref/settings/
+"""
+
 from .base import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -16,5 +28,3 @@ DATABASES = {
 }
 
 INSTALLED_APPS += ('debug_toolbar.apps.DebugToolbarConfig', )
-
-ROOT_URLCONF = 'django_namarrr.urls'

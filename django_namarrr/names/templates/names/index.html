@@ -1,2 +1,7 @@
-<h2>Your Pirate name is:</h2>
-<h1>{{ adjective }} {{ noun }} {{ surname }}</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1>{{ adjective }} {{ noun }} {{ surname }}</h1>
+    </div>
+{% endblock content %}

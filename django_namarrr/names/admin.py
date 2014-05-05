@@ -3,6 +3,7 @@ from names.models import Adjective, Noun, Surname
 
 
 class WordAdmin(admin.ModelAdmin):
+    """Create custom admin page for words"""
     fieldsets = [
         (None,          {'fields': ['text']}),
         ('Vote Totals', {'fields': ['upvotes', 'downvotes'],

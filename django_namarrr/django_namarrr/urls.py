@@ -4,10 +4,10 @@ from django.contrib import admin
 
 urlpatterns = patterns(
     '',
-    # Examples:
-    # url(r'^$', 'django_namarrr.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+    # Built-in Admin
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', include('names.urls', namespace='names'))
+    # User interactions
+    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+    # Main name app
+    url(r'^$', include('names.urls', namespace='names')),
 )

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'accounts:login' %}" role="form" class="form-horizontal">
+        {% csrf_token %}
+        <div class="form-group{% if form.username.errors %} has-error has-feedback{% endif %}">
+            <label for="{{form.username.id_for_label}}" class="control-label col-sm-2">
+                {{ form.username.label }}
+            </label>
+            <div class="col-sm-5">
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                {% endif %}
+            </div>
+            {% if form.username.errors %}
+                <label for="{{form.username.id_for_label}}" class="control-label">
+                    {{ form.username.errors.0 }}
+                </label>
+            {% endif %}
+        </div>
+        <div class="form-group{% if form.password.errors %} has-error{% endif %}">
+            <label for="{{form.password.id_for_label}}" class="control-label col-sm-2">
+                {{ form.password.label }}
+            </label>
+            <div class="col-sm-5">
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                {% endif %}
+            </div>
+            {% if form.password.errors %}
+                <label for="{{form.password.id_for_label}}" class="control-label">
+                    {{ form.password.errors.0 }}
+                </label>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-5">
+                <input type="submit" class="btn btn-default" value="Login" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+        </div>
+   </form>
+
+{% endblock %}

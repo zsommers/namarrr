@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from names.models import Adjective, Noun, Surname
 
@@ -29,6 +31,37 @@ def index(request):
         elif surname in request.user.surname_downvotes.all():
             context['surname_downvote'] = True
 
+    message_list = messages.get_messages(request)
+    for message in message_list:
+        if message.level == messages.SUCCESS:
+            message.alert_class = " alert-success"
+        elif message.level == messages.INFO:
+            message.alert_class = " alert-info"
+        elif message.level == messages.WARNING:
+            message.alert_class = " alert-warning"
+        elif message.level == messages.ERROR:
+            message.alert_class = " alert-danger"
+
     return render(request,
                   'names/index.html',
                   context)
+
+
+@login_required
+def upvote(request, model_id, model):
+    word = model.objects.get(pk=model_id)
+    word.upvote(request.user)
+
+    messages.success(request, "You voted for {}".format(word.text))
+
+    return redirect('names:index')
+
+
+@login_required
+def downvote(request, model_id, model):
+    word = model.objects.get(pk=model_id)
+    word.upvote(request.user)
+
+    messages.success(request, "You voted against {}".format(word.text))
+
+    return redirect('names:index')

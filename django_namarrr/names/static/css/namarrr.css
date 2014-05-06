@@ -10,7 +10,7 @@
     top: 0;
 }
 
-.word-span button {
+.word-span a {
     opacity: 0;
     -webkit-transition: opacity 500ms;
     -moz-transition: opacity 500ms;
@@ -18,12 +18,12 @@
     transition: opacity 500ms;
 }
 
-.word-span:hover button {
-    opacity: 0.5;
+.word-span:hover a {
+    opacity: 0.3;
 }
 
-.word-span:hover button.active {
-    opacity: 0.75;
+.word-span:hover a.active {
+    opacity: 0.8;
 }
 
 .jumbotron h1 {

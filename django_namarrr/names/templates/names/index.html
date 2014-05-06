@@ -7,17 +7,26 @@
 {% endblock css_includes %}
 
 {% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-dismissable{{ message.alert_class }}">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <div class="jumbotron">
         <span class="word-span" id="adjective">
-            {% include 'names/voting-widget.html' with upvote=adjective_upvote downvote=adjective_downvote %}
+            {% include 'names/voting-widget.html' with upvote=adjective_upvote downvote=adjective_downvote word_type='names:adjective' model_id=adjective.id %}
             <h1>{{ adjective }}</h1>
         </span>
         <span class="word-span" id="noun">
-            {% include 'names/voting-widget.html' with upvote=noun_upvote downvote=noun_downvote %}
+            {% include 'names/voting-widget.html' with upvote=noun_upvote downvote=noun_downvote word_type='names:noun' model_id=noun.id %}
             <h1>{{ noun }}</h1>
         </span>
         <span class="word-span" id='surname'>
-            {% include 'names/voting-widget.html' with upvote=surname_upvote downvote=surname_downvote %}
+            {% include 'names/voting-widget.html' with upvote=surname_upvote downvote=surname_downvote word_type='names:surname' model_id=surname.id %}
             <h1>{{ surname }}</h1>
         </span>
     </div>

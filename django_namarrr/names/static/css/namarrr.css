@@ -1,0 +1,33 @@
+/* Voting arrow styles */
+.word-span {
+    display: inline-block;
+    position: relative;
+}
+
+.word-span .voting-btns {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.word-span button {
+    opacity: 0;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    transition: opacity 500ms;
+}
+
+.word-span:hover button {
+    opacity: 0.5;
+}
+
+.word-span:hover button.active {
+    opacity: 0.75;
+}
+
+.jumbotron h1 {
+    font-size: 55px;
+    margin-left: .1em;
+    margin-right: .1em;
+}

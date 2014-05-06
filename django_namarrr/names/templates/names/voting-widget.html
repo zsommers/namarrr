@@ -1,0 +1,15 @@
+
+{% if user.is_authenticated %}
+    <div class="btn-group btn-group-vertical voting-btns">
+        <button type="button"
+                class="btn btn-success{% if upvote %} active{% endif %}"
+                {% if not upvote %}data-toggle="button"{% endif %}>
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </button>
+        <button type="button"
+                class="btn btn-danger{% if downvote %} active{% endif %}"
+                {% if not downvote %}data-toggle="button"{% endif %}>
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+    </div>
+{% endif %}

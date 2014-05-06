@@ -26,7 +26,7 @@
             <div class="header">
                 <ul class="nav nav-pills pull-right">
                     {% if user.is_authenticated %}
-                        <li>
+                        <li class="disabled" id="coming-soon" data-toggle="tooltip" data-placement="left" title="Coming soon!">
                             <a href="#">Submit Words</a>
                         </li>
                         <li class="dropdown">
@@ -48,7 +48,7 @@
                     {% endif %}
                 </ul>
                 <h3 class="text-muted">Namarrr</h3>
-            </div>
+            </div> <!-- end header -->
             {% block content %}
                 Hello World!
             {% endblock content %}
@@ -58,6 +58,12 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
                 <!-- Include all compiled plugins (below), or include individual files as needed -->
                 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+                <script>
+                    $().ready(function() {
+                        $('#coming-soon').tooltip();
+                    });
+                </script>
             {% endblock js_includes %}
         </div>
     </body>

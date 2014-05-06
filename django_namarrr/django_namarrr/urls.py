@@ -9,5 +9,5 @@ urlpatterns = patterns(
     # User interactions
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     # Main name app
-    url(r'^$', include('names.urls', namespace='names')),
+    url(r'^', include('names.urls', namespace='names')),
 )

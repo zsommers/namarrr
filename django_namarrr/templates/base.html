@@ -26,7 +26,12 @@
             <div class="header">
                 <ul class="nav nav-pills pull-right">
                     {% if user.is_authenticated %}
-                        <li class="disabled" id="coming-soon" data-toggle="tooltip" data-placement="left" title="Coming soon!">
+                        <li class="disabled"
+                            id="coming-soon"
+                            data-toggle="tooltip"
+                            data-placement="left"
+                            data-container="body"
+                            title="Coming soon!">
                             <a href="#">Submit Words</a>
                         </li>
                         <li class="dropdown">

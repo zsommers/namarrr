@@ -31,12 +31,14 @@ class Word(models.Model):
     def upvote(self, user):
         """Business logic for handling upvotes"""
         self.upvotes.add(user)
+        self.downvotes.remove(user)
         self.weigh_votes()
         self.save()
 
     def downvote(self, user):
         """Business logic for handling downvotes"""
         self.downvotes.add(user)
+        self.upvotes.remove(user)
         self.weigh_votes()
         self.save()
 

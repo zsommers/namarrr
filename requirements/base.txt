@@ -1,3 +1,4 @@
 https://www.djangoproject.com/download/1.7b3/tarball/
 pyinotify==0.9.4
+# Requires python-dev and libpq-dev
 psycopg2==2.5.2

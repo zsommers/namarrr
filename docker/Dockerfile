@@ -19,11 +19,16 @@ RUN pip3 install -r requirements/demo.txt
 
 # Setup Namarrr env variables
 ENV NAMARRR_KEY "notforproduction"
-ENV DJANGO_SETTINGS_MODULE django_namarrr/settings/demo
+ENV DJANGO_SETTINGS_MODULE django_namarrr.settings.demo
 
 WORKDIR /namarrr/django_namarrr
 
 # Load initial data
-RUN python3 manage.py loaddata --no-input ../docker/init_data.json
+RUN python3 manage.py migrate
+RUN python3 manage.py loaddata ../docker/init_data.json
 
-ENTRYPOINT ["/bin/bash"]
+RUN python3 manage.py collectstatic --noinput
+
+EXPOSE 8000
+#ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["python3", "manage.py", "runserver", "0.0.0.0:8000"]

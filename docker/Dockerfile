@@ -9,15 +9,21 @@ RUN apt-get update
 # General dependencies
 RUN apt-get install -y git python3-pip
 
-# psycopg2 dependencies
-RUN apt-get install -y python3-dev libpq-dev
-
 # Download repo
-RUN git clone https://github.com/zsommers/namarrr.git
-
+RUN git clone https://github.com/zsommers/namarrr/
 WORKDIR /namarrr
+RUN git checkout demo
 
 # Django requirements
-# RUN pip3 install -r namarrr/requirements/production.txt
+RUN pip3 install -r requirements/demo.txt
+
+# Setup Namarrr env variables
+ENV NAMARRR_KEY "notforproduction"
+ENV DJANGO_SETTINGS_MODULE django_namarrr/settings/demo
+
+WORKDIR /namarrr/django_namarrr
+
+# Load initial data
+RUN python3 manage.py loaddata --no-input ../docker/init_data.json
 
 ENTRYPOINT ["/bin/bash"]

@@ -14,16 +14,14 @@ from .base import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'namarrr',
     }
 }
-
-INSTALLED_APPS += ('debug_toolbar.apps.DebugToolbarConfig', )

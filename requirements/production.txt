@@ -1,1 +1,6 @@
+# Production requirements for Namarrr
+
 -r base.txt
+
+# Postgres requires python-dev and libpq-dev from apt-get
+psycopg2==2.5.2

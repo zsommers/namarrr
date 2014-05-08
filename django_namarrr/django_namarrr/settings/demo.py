@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 from .base import *
 
-INSTALLED_APPS += ['finalware']
+INSTALLED_APPS += ('finalware',)
 
 SITE_SUPERUSER_USERNAME = 'admin'
 SITE_SUPERUSER_EMAIL = "zsommers@gmail.com"

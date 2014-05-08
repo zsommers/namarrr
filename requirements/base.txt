@@ -1,4 +1,5 @@
 # Base requirement for Namarrr
 
-https://www.djangoproject.com/download/1.7b3/tarball/
+# Required for mitrations bug
+git+https://github.com/django/django@stable/1.7.x
 pyinotify==0.9.4

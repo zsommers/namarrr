@@ -1,7 +1,7 @@
 """
 Django settings for django_namarrr project.
 
-Local developer settings
+Demo settings
 
 For more information on this file, see
 https://docs.djangoproject.com/en/dev/topics/settings/
@@ -12,7 +12,12 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 from .base import *
 
-# SECURITY WARNING: keep the secret key used in production secret!
+INSTALLED_APPS += ['finalware']
+
+SITE_SUPERUSER_USERNAME = 'admin'
+SITE_SUPERUSER_EMAIL = "zsommers@gmail.com"
+SITE_SUPERUSER_PASSWORD = 'admin'
+SITE_SUPERUSER_ID = '5432'
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG

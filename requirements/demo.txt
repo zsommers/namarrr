@@ -1,3 +1,5 @@
 # Demo requirements for Namarrr
 
 -r base.txt
+
+django-finalware

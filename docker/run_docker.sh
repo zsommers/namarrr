@@ -2,7 +2,7 @@
 
 docker build -t namarrr .
 
-PORT=docker inspect --format='{{(index (index .HostConfig.PortBindings "8000/tcp") 0).HostPort}}' namarrr
+PORT=$(docker ps -l | sed -n 's/.*:\(.*\)-.*/\1/p')
 
 echo "Site is running on http://localhost:$PORT"
 

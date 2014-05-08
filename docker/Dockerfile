@@ -31,4 +31,4 @@ RUN python3 manage.py collectstatic --noinput
 
 EXPOSE 8000
 #ENTRYPOINT ["/bin/bash"]
-ENTRYPOINT ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+ENTRYPOINT ["python3", "manage.py", "runserver", "--insecure", "0.0.0.0:8000"]

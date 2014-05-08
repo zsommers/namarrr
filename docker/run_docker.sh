@@ -2,8 +2,8 @@
 
 docker build -t namarrr .
 
-PORT=$(docker ps -l | sed -n 's/.*:\(.*\)-.*/\1/p')
+docker run -t -d -p 8000 namarrr
+
+PORT=$(docker ps | grep namarrr | sed -n 's/.*:\(.*\)-.*/\1/p')
 
 echo "Site is running on http://localhost:$PORT"
-
-docker run -t -p 8000 namarrr
